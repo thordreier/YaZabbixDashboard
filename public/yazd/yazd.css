@@ -1,0 +1,141 @@
+body {
+  font-size: 12px;
+  font-family: Verdana, Arial;
+  background: #3C3C3C;
+  position: relative;
+  margin: 0px 0px 0px 10px;
+}
+
+#clocks {
+  display: flex;
+}
+
+.clock {
+  padding: 10px;
+  color: #E8E8E8;
+  text-align: center;
+}
+
+.clockname {
+  font-size: 10px;
+}
+
+.clocktime {
+  font-size: 20px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+  text-indent: 15px;
+  color: #FFFFFF;
+  padding: 0px 0px 5px 0px;
+}
+
+.hostbox {
+  width: 225px;
+  float: left;
+  margin: 10px 0px 0px 10px;
+  padding: 10px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0px 0px 5px #1E1E1E;
+}
+
+.ok {
+  background-color: #4B9C05;
+}
+
+.nok0 {
+  background-color: #4B9C05;
+}
+
+.nok1 {
+  background-color: #99CC00;
+}
+
+.nok2 {
+  background-color: #F3E427;
+}
+
+.nok3 {
+  background-color: #FA9321;
+}
+
+.nok4 {
+  background-color: #E94B16;
+}
+
+.nok5 {
+  background-color: #B10505;
+}
+
+.nok5.hostbox {
+  border-radius: 4px;
+  animation: shadow-pulse 1s infinite;
+}
+
+.hostid {
+  font-family: Serif;
+  font-size: 8px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #D7D7D7;
+}
+
+.nok2 .hostid {
+  color: #232323;
+}
+
+.nok2 .title {
+  color: #232323;
+}
+
+.description {
+  font-family: Serif;
+  margin: 3px 0;
+  order: none;
+  background: #ffffff;
+  font-size: 12px;
+  padding: 5px 5px 5px 5px;
+  line-height:145%;
+  word-break: break-all;
+  border-radius: 2px;
+}
+
+.smallsquare {
+  height: 10px;
+  width: 10px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+@keyframes shadow-pulse
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(254, 15, 0, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 35px rgba(210, 11, 0, 0);
+  }
+}
+
+@keyframes shadow-pulse-big
+{
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 70px rgba(0, 0, 0, 0);
+  }
+}
+
+/*
+.blink {
+  background: rgba(244, 0, 0, 0.74);
+  border-radius: 4px;
+  animation: shadow-pulse 1s infinite;
+}
+*/

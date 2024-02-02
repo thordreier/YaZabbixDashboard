@@ -1,0 +1,7 @@
+/composer.lock
+/vendor/
+/public/*
+!/public/index.php
+!/public/yazd/
+/settings.php
+/dashboards.yaml

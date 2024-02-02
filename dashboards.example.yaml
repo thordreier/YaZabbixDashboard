@@ -1,0 +1,20 @@
+---
+
+- dashboard: Dashboard1
+  token: abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+  zabbixtoken: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+  severities: [0, 1, 2, 3, 4, 5]
+  hostname_replace:
+    - pattern: "\\..*$"
+      replacement: ""
+  clocks:
+    - name: Danmark
+      timezone: Europe/Copenhagen
+      format: H:i:s
+    - name: UTC
+      timezone: UTC
+      format: H:i:s
+
+- dashboard: Dashboard2
+  token: 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+  zabbixtoken: abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789
