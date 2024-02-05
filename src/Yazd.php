@@ -40,14 +40,17 @@ class Yazd {
     }
 
     public function getProblems () {
-        $zabbixproblems = $this->zabbixapi->request('problem.get', [
+        $zabbixproblems_params = [
             'selectTags' => 'extend',
             'suppressed' => false,
             'min_severity' => 4,
             'severities' => $this->dashboardinfo->get('severities', [2,3,4,5]),
             'object' => 0,  # 0=trigger, 4=item, 5=LLD rule
-
-        ]);
+        ];
+        if (! $this->dashboardinfo->get('show_acknowledged', false)) {
+            $zabbixproblems_params['acknowledged'] = false;
+        }
+        $zabbixproblems = $this->zabbixapi->request('problem.get', $zabbixproblems_params);
         $zabbixtriggers = $this->zabbixapi->request('trigger.get', [
             'skipDependent' => 1,
             'triggerids' => array_column($zabbixproblems, 'objectid'),
@@ -69,6 +72,7 @@ class Yazd {
                 'hostid' => $zabbixtrigger['hosts'][0]['hostid'],
                 'severity' => $zabbixproblem['severity'],
                 'name' => $zabbixproblem['name'],
+                'acknowledged' => $zabbixproblem['acknowledged'],
             ];
         }, $zabbixtriggers);
         return $hostgroups;
