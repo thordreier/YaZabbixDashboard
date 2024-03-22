@@ -28,28 +28,28 @@ return function (App $app) {
 
     $app->get('/dashboard/{dashboard}/{token}/hostgroups.json', function (Request $request, Response $response, $args) {
         return json($response, [
-            'hostgroups' => (new Yazd($args['dashboard'], $args['token']))->getHostGroups(),
+            'hostgroups' => (new Yazd($args['dashboard'], $args['token'], $request))->getHostGroups(),
         ]);
     });
 
     $app->get('/dashboard/{dashboard}/{token}/hostswithproblems.json', function (Request $request, Response $response, $args) {
         return json($response, [
-            'hosts' => (new Yazd($args['dashboard'], $args['token']))->getHostsWithProblems(),
-            'clocks' => (new Yazd($args['dashboard'], $args['token']))->getClocks(),
+            'hosts' => (new Yazd($args['dashboard'], $args['token'], $request))->getHostsWithProblems(),
+            'clocks' => (new Yazd($args['dashboard'], $args['token'], $request))->getClocks(),
         ]);
     });
  
     $app->get('/dashboard/{dashboard}/{token}/problems.json', function (Request $request, Response $response, $args) {
         # This function isn't used for anything at the moment
         return json($response, [
-            'problems' => (new Yazd($args['dashboard'], $args['token']))->getProblems(),
+            'problems' => (new Yazd($args['dashboard'], $args['token'], $request))->getProblems(),
         ]);
     });
  
     $app->get('/dashboard/{dashboard}/{token}/clocks.json', function (Request $request, Response $response, $args) {
         # This function isn't used for anything at the moment
         return json($response, [
-            'clocks' => (new Yazd($args['dashboard'], $args['token']))->getClocks(),
+            'clocks' => (new Yazd($args['dashboard'], $args['token'], $request))->getClocks(),
         ]);
     });
 

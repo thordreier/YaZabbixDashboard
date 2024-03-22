@@ -7,12 +7,7 @@ function exception_error_handler($errno, $errstr, $errfile, $errline ) {
 set_error_handler('exception_error_handler');
 
 require_once __DIR__ . '/../settings.php';
-
-if(!defined('DEBUG')) {define('DEBUG', false);}  # Should not be set to true in production
-if (defined('DEBUG') && DEBUG) {error_reporting(E_ALL); ini_set('display_errors', '1');}
-
-if(!defined('ZABBIXURL')) {define('ZABBIXURL', 'http://localhost/api_jsonrpc.php');}
-if(!defined('USERSYAML')) {define('DASHBOARDSSYAML', '../dashboards.yaml');}
+require_once __DIR__ . '/../app/defaults.php';
 
 use Slim\Factory\AppFactory;
 

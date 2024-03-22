@@ -1,15 +1,29 @@
 <?php
 namespace YaZabbixDashboard;
 
+use Psr\Http\Message\ServerRequestInterface as Request;
+
 class Yazd {
     private $dashboard;
+    private $request;
     private $dashboardinfo;
     private $zabbixapi;
 
-    public function __construct($dashboard, $token) {
+    public function __construct(String $dashboard, String $token, Request $request) {
         $this->dashboard = $dashboard;
+        $this->request = $request;
         $this->dashboardinfo = new DashboardInfo(DASHBOARDSSYAML, $dashboard, $token);
         $this->zabbixapi = new ZabbixApi(ZABBIXURL, $this->dashboardinfo->get('zabbixtoken'));
+        $this->checkAccess();
+    }
+
+    public function checkAccess () {
+        if ($cidrs = $this->dashboardinfo->get('ipv4_whitelist', false)) {
+            $ip = $this->request->getServerParams()['REMOTE_ADDR'];
+            if (! IpFunctions::ipInCidrs($ip, $cidrs)) {
+                throw new \Exception("IP address is not whitelisted: ".$ip);
+            }
+        }
     }
 
     public function getHostGroups () {
