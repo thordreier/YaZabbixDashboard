@@ -57,7 +57,6 @@ class Yazd {
         $zabbixproblems_params = [
             'selectTags' => 'extend',
             'suppressed' => false,
-            'min_severity' => 4,
             'severities' => $this->dashboardinfo->get('severities', [2,3,4,5]),
             'object' => 0,  # 0=trigger, 4=item, 5=LLD rule
         ];
